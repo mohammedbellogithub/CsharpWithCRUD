@@ -58,8 +58,8 @@ namespace TestForm
         {
             SqlConnection con = new SqlConnection("Data Source=MOHAMMEDBELLO;Initial Catalog=TestDB;Integrated Security=True;Pooling=False");
             con.Open();
-            SqlCommand cmd = new SqlCommand("Select * from UserTable", con);
-
+            SqlCommand cmd = new SqlCommand("Select * from UserTable where ID=@ID", con);
+            cmd.Parameters.AddWithValue("@ID", int.Parse(textBox1.Text));
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
